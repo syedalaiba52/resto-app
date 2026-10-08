@@ -5,10 +5,11 @@ import React from "react";
 const RestaurantHeader = () => {
   return (
     <>
-      <div className="header-wrapper">
+      <div className="header-wrapper ">
         <div className="logo">
           <Image
-            width={100} height={100}
+            width={100}
+            height={100}
             src="/images/logo.webp"
             alt="logo image"
           />
