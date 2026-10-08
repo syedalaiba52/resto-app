@@ -1,11 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
 * {
-	outline: none;
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-	font-family: "Poppins", sans-serif;
+  outline: none;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
 
 .input-wrapper {
@@ -19,11 +19,12 @@
 }
 
 .button {
- width: 300px;
+  width: 300px;
   height: 40px;
   background: transparent;
   border: solid 1px gray;
   border-radius: 2px;
+  color: gray;
 }
 
 .container {
@@ -31,9 +32,9 @@
 }
 
 .button-link {
-	border: none;
-	background: none;
-	cursor: pointer;
-	color: rgb(45, 171, 220);
-	margin: 20px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  color: rgb(45, 171, 220);
+  margin: 20px 0px 50px 0px;
 }
