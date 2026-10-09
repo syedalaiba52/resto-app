@@ -5,35 +5,27 @@ const RestaurantLogin = () => {
 
       <div>
         <div className="input-wrapper">
-          <input className="input-field" type="email" placeholder="Enter email" />
+          <input
+            className="input-field"
+            type="email"
+            placeholder="Enter email"
+            // value={email}
+            // onChange={(event) => setEmail(event.target.value)}
+          />
         </div>
 
         <div className="input-wrapper">
-          <input className="input-field" type="password" placeholder="Enter password" />
-        </div>
-
-         <div className="input-wrapper">
-          <input className="input-field" type="password" placeholder="Confirm password" />
-        </div>
-
-         <div className="input-wrapper">
-          <input className="input-field" type="text" placeholder="Enter Restaurant Name" />
-        </div>
-
-         <div className="input-wrapper">
-          <input className="input-field" type="text" placeholder="Enter City" />
-        </div>
-
-         <div className="input-wrapper">
-          <input className="input-field" type="text" placeholder="Enter Full Address" />
-        </div>
-
-         <div className="input-wrapper">
-          <input className="input-field" type="tel" placeholder="Enter Contact No." />
+          <input
+            className="input-field"
+            type="password"
+            placeholder="Enter password"
+            // value={email}
+            // onChange={(event) => setEmail(event.target.value)}
+          />
         </div>
 
         <div className="input-wrapper">
-          <button className="button">Sign Up</button>
+          <button className="button">Login</button>
         </div>
       </div>
     </>
