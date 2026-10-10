@@ -1,8 +1,24 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import { useRouter } from "next/navigation";
+import React, { useEffect, useState } from "react";
 
 const RestaurantHeader = () => {
+  const [details, setDetails] = useState();
+
+  const router = useRouter();
+
+  useEffect(() => {
+    let data = localStorage.getItem("restaurantUser");
+    if (!data) {
+      router.push("/restaurant");
+    } else {
+      setDetails(JSON.parse(data));
+    }
+  });
+
   return (
     <>
       <div className="header-wrapper ">

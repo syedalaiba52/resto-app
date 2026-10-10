@@ -25,6 +25,11 @@
   border: solid 1px gray;
   border-radius: 2px;
   color: gray;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: rgb(239, 239, 239);
 }
 
 .container {
