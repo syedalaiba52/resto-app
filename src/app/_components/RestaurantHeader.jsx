@@ -2,22 +2,41 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
 const RestaurantHeader = () => {
-  const [details, setDetails] = useState();
+  const [details, setDetails] = useState(null);
 
   const router = useRouter();
+  const pathName = usePathname();
 
-  useEffect(() => {
-    let data = localStorage.getItem("restaurantUser");
-    if (!data) {
-      router.push("/restaurant");
-    } else {
-      setDetails(JSON.parse(data));
-    }
-  });
+  
+
+useEffect(() => {
+  const data = localStorage.getItem("restaurantUser");
+
+  if (!data && pathName === "/restaurant/dashboard") {
+    router.push("/restaurant");
+  } else if (data && pathName === "/restaurant") {
+    router.push("/restaurant/dashboard");
+  }
+}, [pathName, router]);
+
+useEffect(() => {
+  const data = localStorage.getItem("restaurantUser");
+
+  if (data) {
+    queueMicrotask(() => setDetails(JSON.parse(data)));
+  }
+}, []);
+
+
+
+  const logout = () => {
+    localStorage.removeItem("restaurantUser");
+    router.push("/restaurant");
+  };
 
   return (
     <>
@@ -36,13 +55,20 @@ const RestaurantHeader = () => {
             <Link href="/">Home</Link>
           </li>
 
-          <li>
-            <Link href="/">Login/SignUp</Link>
-          </li>
-
-          <li>
-            <Link href="/">Profile</Link>
-          </li>
+          {details && details.name ? (
+            <>
+              <li>
+                <button onClick={logout}>Logout</button>
+              </li>
+              <li>
+                <Link href="/">Profile</Link>
+              </li>
+            </>
+          ) : (
+            <li>
+              <Link href="/">Login/SignUp</Link>
+            </li>
+          )}
         </ul>
       </div>
     </>

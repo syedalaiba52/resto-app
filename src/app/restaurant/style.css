@@ -1,24 +1,32 @@
 /* header */
 .header-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 90%;
-    margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 90%;
+  margin: 0 auto;
 }
 
 .header-wrapper ul {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-    list-style-type: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  list-style-type: none;
 }
 
 .header-wrapper ul li a {
-    padding: 5px;
-    color: black;
-    text-decoration: none;
+  padding: 5px;
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.header-wrapper ul li button {
+  padding: 5px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
 }
 
 /* footer */
