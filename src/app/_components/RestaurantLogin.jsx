@@ -5,14 +5,25 @@ const RestaurantLogin = () => {
   const [password, setPassword] = useState();
   const [error, setError] = useState(false);
 
-  const handleLogin = () => {
+  const handleLogin = async () => {
     console.log(email, password);
 
     if (!email || !password) {
       setError(true);
-      // return false;
+      return false;
     } else {
       setError(false);
+    }
+
+    let response = await fetch("http://localhost:3000/api/restaurant", {
+      method: "POST",
+      body: JSON.stringify({ email, password, login: true }),
+    });
+
+    response = await response.json();
+
+    if (response.success) {
+      alert("Login Successful");
     }
   };
   return (
