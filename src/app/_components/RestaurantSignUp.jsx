@@ -2,13 +2,13 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 const RestaurantSignUp = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [c_password, setC_password] = useState("");
-  const [name, setName] = useState("");
-  const [city, setCity] = useState("");
-  const [address, setAddress] = useState("");
-  const [contact, setContact] = useState("");
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+  const [c_password, setC_password] = useState();
+  const [name, setName] = useState();
+  const [city, setCity] = useState();
+  const [address, setAddress] = useState();
+  const [contact, setContact] = useState();
   const router = useRouter();
   const [error, setError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
