@@ -5,40 +5,43 @@ const AddFoodItem = () => {
   const [price, setPrice] = useState();
   const [path, setPath] = useState();
   const [description, setDescription] = useState();
+  const [error, setError] = useState(false);
 
-  
-const handleAddFoodItem = async () => {
-  const restaurantData = JSON.parse(
-    localStorage.getItem("restaurantUser")
-  );
+  const handleAddFoodItem = async () => {
+    console.log(name, price, path, description);
 
-  if (!restaurantData?._id) {
-    alert("Please login as a restaurant first");
-    return;
-  }
+    if (!name || !price || !path || !description) {
+      setError(true);
+      return false;
+    } else {
+      setError(false);
+    }
 
-  const resto_id = restaurantData._id;
+    let resto_id;
+    const restaurantData = JSON.parse(localStorage.getItem("restaurantUser"));
+    if (restaurantData) {
+      resto_id = restaurantData._id;
+    }
 
-  let response = await fetch("/api/restaurant/foods", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      name,
-      price: Number(price),
-      img_path: path,
-      description,
-      resto_id,
-    }),
-  });
+    let response = await fetch("/api/restaurant/foods", {
+      method: "POST",
+      body: JSON.stringify({
+        name,
+        price,
+        img_path: path,
+        description,
+        resto_id,
+      }),
+    });
 
-  response = await response.json();
+    response = await response.json();
 
-  if (response.success) {
-    alert("Food Item Added");
-  }
-};
+    if (response.success) {
+      alert("Food item added");
+    } else {
+      alert("Food item not added");
+    }
+  };
 
   return (
     <div className="container">
@@ -56,6 +59,9 @@ const handleAddFoodItem = async () => {
               setName(event.target.value);
             }}
           />
+          {error && !name && (
+            <span className="input-error">Please enter valid name</span>
+          )}
         </div>
 
         {/* price */}
@@ -69,6 +75,9 @@ const handleAddFoodItem = async () => {
               setPrice(event.target.value);
             }}
           />
+          {error && !price && (
+            <span className="input-error">Please enter valid price</span>
+          )}
         </div>
 
         {/* path */}
@@ -82,6 +91,9 @@ const handleAddFoodItem = async () => {
               setPath(event.target.value);
             }}
           />
+          {error && !path && (
+            <span className="input-error">Please enter valid image path</span>
+          )}
         </div>
 
         {/* description */}
@@ -95,6 +107,9 @@ const handleAddFoodItem = async () => {
               setDescription(event.target.value);
             }}
           />
+          {error && !description && (
+            <span className="input-error">Please enter valid description</span>
+          )}
         </div>
 
         <div className="input-wrapper">
